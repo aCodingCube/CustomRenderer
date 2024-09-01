@@ -5,7 +5,7 @@
 import std;
 
 // custom modules
-
+import WindowClass;
 
 // main
 
@@ -13,9 +13,28 @@ int main()
 {
 	//! Creating Window
 	
+	std::cout << "[WND] Creating Window\n";
 
+	cWND::Window* pWindow = new cWND::Window();
 
+	std::cout << "Test1\n";
 
+	bool running = true;
+	while (running)
+	{
+		if (!pWindow->ProcessMessages())
+		{
+			std::cout << "[WND] Closing Window \n";
+			running = false;
+		}
+
+		//! Main Loop
+		
+	}
+
+	delete pWindow;
+
+	/*
 	//! Writing Pixels
 
 	// get window context
@@ -44,6 +63,8 @@ int main()
 	DeleteDC(src);
 	DeleteObject(map);
 	DeleteDC(src);
+
+	*/
 
 	return 0;
 }
