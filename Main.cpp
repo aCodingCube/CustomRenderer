@@ -1,23 +1,32 @@
-// std
-#include <iostream>
-
 // windows
 #include <Windows.h>
+
+// std
+import std;
+
+// custom modules
+
 
 // main
 
 int main()
 {
+	//! Creating Window
+	
+
+
+
+	//! Writing Pixels
 
 	// get window context
 	HDC hdc = GetDC(NULL);
 
-	COLORREF* arr = (COLORREF*)calloc(512 * 512, sizeof(COLORREF));
+	COLORREF* arr = static_cast<COLORREF*>(calloc(512 * 512, sizeof(COLORREF)));
 
 	// modify/fill array here
 
 	// creating temp bitmap
-	HBITMAP map = CreateBitmap(512, 512, 1, 8 * 4, (void*)arr); // width, height, Color Planes?, size of memory for one pixel, pointer to array
+	HBITMAP map = CreateBitmap(512, 512, 1, 8 * 4, static_cast<void*>(arr)); // width, height, Color Planes?, size of memory for one pixel, pointer to array
 
 	// temp HDC to copy picture
 	HDC src = CreateCompatibleDC(hdc); // hdc - Device Context for window
