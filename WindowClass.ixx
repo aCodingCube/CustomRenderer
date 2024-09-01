@@ -27,9 +27,15 @@ namespace cWND
 	{
 	private:
 		HINSTANCE m_hInstance = {};
-		HWND m_hWnd = {};
+		
 
 		const wchar_t* CLASS_NAME = L"Basic Window Class";
+
+	public:
+		// public member variables
+		HWND m_hWnd = {};
+		int width = 640;
+		int height = 480;
 
 	public:
 		Window()
@@ -46,9 +52,6 @@ namespace cWND
 			RegisterClass(&wndClass);
 
 			DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
-
-			int width = 640;
-			int height = 480;
 
 			RECT rect; // window sizes
 			rect.left = 250;
