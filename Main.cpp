@@ -60,13 +60,9 @@ int main()
 			// get bitArray (array with RGB value of all pixels)
 			COLORREF* bitArray = renderer.getBitArray();
 
-			for (int i = 0; i < (pWindow->width * pWindow->height); i++)
-			{
-				bitArray[i] = renderer.correctedRGB(0, 0, 255);
-			}
-
-			bitArray[50] = renderer.correctedRGB(255, 255,255);
-
+			// Todo Render Loop in other decentral file?
+			RenderLoop();
+			
 			// render bit array
 			renderer.renderBitArray();
 		}
