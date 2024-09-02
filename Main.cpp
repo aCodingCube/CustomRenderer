@@ -6,64 +6,79 @@ import std;
 
 // custom modules
 import WindowClass;
+import LogTags;
+import RendererSetup;
+import fpsTimer;
+
+// functions
+inline void tagSetup(cslTag::Tags& logger)
+{
+	logger.createNewTag(cslTag::RED, "ERROR");
+	logger.createNewTag(cslTag::LIGHT_YELLOW, "WARNING");
+	logger.createNewTag(cslTag::LIGHT_BLUE, "WINDOW");
+	logger.createNewTag(cslTag::LIGHT_GREEN, "RENDERER");
+}
 
 // main
 
 int main()
 {
+	// creating log tags
+	cslTag::Tags logger = {};
+
+	tagSetup(logger);
+
 	//! Creating Window
 
-	std::cout << "[WND] Creating Window\n";
+	logger.tag("WINDOW");
+	std::cout << "Creating Window\n";
 
+	// create Window obj
 	cWND::Window* pWindow = new cWND::Window();
+
+	// creating renderer obj
+	RNDR::Renderer renderer(pWindow);
+
+	// creating FPS Timer to controll Framerate
+	constexpr unsigned int framerate = 28;
+	fps::FPStimer fpsTimer(28);
 
 	bool running = true;
 	while (running)
 	{
-		if (!pWindow->ProcessMessages())
+		if (fpsTimer.getUpdate())
 		{
-			std::cout << "[WND] Closing Window \n";
-			running = false;
+			if (!pWindow->ProcessMessages())
+			{
+				logger.tag("WINDOW");
+				std::cout << "Closing Window \n";
+				running = false;
+			}
+
+			//! Main Loop
+			// get bitArray (array with RGB value of all pixels)
+			COLORREF* bitArray = renderer.getBitArray();
+
+			for (int i = 0; i < (pWindow->width * pWindow->height); i++)
+			{
+				bitArray[i] = renderer.correctedRGB(0, 0, 255);
+			}
+
+			// render bit array
+			renderer.renderBitArray();
 		}
-
-		//! Main Loop
-		
-		//! Writing Pixels
-
-		// window width and height
-		unsigned int wndWidth = pWindow->width;
-		unsigned int wndHeight = pWindow->height;
-
-		// get window context
-		HDC hdc = GetDC(pWindow->m_hWnd);
-
-		COLORREF* arr = static_cast<COLORREF*>(calloc(wndWidth * wndHeight, sizeof(COLORREF)));
-
-		// modify/fill array here
-
-		// creating temp bitmap
-		HBITMAP map = CreateBitmap(wndWidth, wndHeight, 1, 8 * 4, static_cast<void*>(arr)); // width, height, Color Planes?, size of memory for one pixel, pointer to array
-
-		// temp HDC to copy picture
-		HDC src = CreateCompatibleDC(hdc); // hdc - Device Context for window
-
-		// insert picture into the temp HDC
-		SelectObject(src, map);
-
-		// copy picture from temp HDC to window
-		BitBlt(hdc, 0, 0, wndWidth, wndHeight, src, 0, 0, SRCCOPY); // Destination, x and, y - upper-let corner of place of where to copy, width of the region,
-		// height, source, x and, y of upper-left corner of part of the source, 
-
-		Sleep(1); // Todo Add framerate
-
-		// clearing memory
-		DeleteDC(src);
-		DeleteObject(map);
-		DeleteDC(src);
 	}
 
 	delete pWindow;
 
+	logger.tag("WINDOW");
+	std::cout << "Window obj deleted!\n";
+
+	logger.tag("PROGRAM");
+	std::cout << "Clean up finished!\n";
+	std::cout << "Press any key to terminate Program!" << std::endl; // endl to clear
+	
+	std::cin.get(); // wait for input (any key)
 
 	return 0;
 }

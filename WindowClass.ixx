@@ -26,14 +26,14 @@ namespace cWND
 	export class Window
 	{
 	private:
-		HINSTANCE m_hInstance = {};
+		HINSTANCE m_hInstance = nullptr;
 		
 
 		const wchar_t* CLASS_NAME = L"Basic Window Class";
 
 	public:
 		// public member variables
-		HWND m_hWnd = {};
+		HWND m_hWnd = nullptr;
 		int width = 640;
 		int height = 480;
 
@@ -46,14 +46,14 @@ namespace cWND
 			wndClass.lpszClassName = CLASS_NAME;
 			wndClass.hInstance = m_hInstance;
 			wndClass.hIcon = LoadIcon(NULL, IDI_WINLOGO);
-			wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+			wndClass.hCursor = LoadCursor(NULL, IDC_CROSS);
 			wndClass.lpfnWndProc = WindowProc;
 
 			RegisterClass(&wndClass);
 
 			DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
 
-			RECT rect; // window sizes
+			RECT rect = {}; // window sizes
 			rect.left = 250;
 			rect.top = 250;
 			rect.right = rect.left + width;
@@ -64,7 +64,7 @@ namespace cWND
 			m_hWnd = CreateWindowEx(
 				0,
 				CLASS_NAME,
-				L"Title", // title
+				L"Custom Render Engine", // title
 				style,
 				rect.left, // x offset
 				rect.top, // y offset
@@ -91,7 +91,7 @@ namespace cWND
 
 		bool ProcessMessages()
 		{
-			MSG msg;
+			MSG msg = {};
 
 			while (PeekMessage(&msg, nullptr, 0u, 0u, PM_REMOVE))
 			{

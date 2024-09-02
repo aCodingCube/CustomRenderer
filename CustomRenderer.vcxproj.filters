@@ -21,5 +21,14 @@
     <ClCompile Include="WindowClass.ixx">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="RendererSetup.ixx">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="logTags.ixx">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="fpsTimer.ixx">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
