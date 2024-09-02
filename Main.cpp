@@ -17,6 +17,7 @@ inline void tagSetup(cslTag::Tags& logger)
 	logger.createNewTag(cslTag::LIGHT_YELLOW, "WARNING");
 	logger.createNewTag(cslTag::LIGHT_BLUE, "WINDOW");
 	logger.createNewTag(cslTag::LIGHT_GREEN, "RENDERER");
+	logger.createNewTag(cslTag::LIGHT_MAGENTA, "PROGRAM");
 }
 
 // main
@@ -63,6 +64,8 @@ int main()
 			{
 				bitArray[i] = renderer.correctedRGB(0, 0, 255);
 			}
+
+			bitArray[50] = renderer.correctedRGB(255, 255,255);
 
 			// render bit array
 			renderer.renderBitArray();

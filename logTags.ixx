@@ -28,17 +28,21 @@ namespace cslTag
 		}
 
 		void tag(std::string tagName)
-		{
-			// bold text
-			//std::cout << "\033[1m";
-
-			// colored tag
-			std::cout << "\033[" << m_tagColorMap.at(tagName) << "m";
-			std::cout << "[" << tagName << "] ";
-			std::cout << "\033[" << STANDART_COLOR << "m";
-
-			//std::cout << "\033[0m"; // back to default
-
+		{	
+			try
+			{
+				// colored tag
+				std::cout << "\033[" << m_tagColorMap.at(tagName) << "m";
+				std::cout << "[" << tagName << "] ";
+				std::cout << "\033[" << STANDART_COLOR << "m";
+			}
+			catch (const std::exception& e)
+			{
+				std::cout << "\033[31m";
+				std::cout << "[ERROR] ";
+				std::cout << "\033[" << STANDART_COLOR << "m";
+				std::cout << "LogTags: " << e.what() << "\n";
+			}
 		}
 	};
 }
