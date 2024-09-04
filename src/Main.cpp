@@ -1,6 +1,7 @@
 // windows
 #include <Windows.h>
 
+
 // std
 import std;
 
@@ -9,6 +10,8 @@ import WindowClass;
 import LogTags;
 import RendererSetup;
 import fpsTimer;
+import Renderer;
+import vectorPoints;
 
 // functions
 inline void tagSetup(cslTag::Tags& logger)
@@ -60,8 +63,12 @@ int main()
 			// get bitArray (array with RGB value of all pixels)
 			COLORREF* bitArray = renderer.getBitArray();
 
-			// Todo Render Loop in other decentral file?
-			RenderLoop();
+			//! ---
+			
+		
+			bitArray[RNDR::hash2Dto1D(639, 1, 640)] = RNDR::cRGB(0, 255, 0);
+
+			//! ---
 			
 			// render bit array
 			renderer.renderBitArray();

@@ -133,11 +133,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="fpsTimer.ixx" />
-    <ClCompile Include="logTags.ixx" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="RendererSetup.ixx" />
-    <ClCompile Include="WindowClass.ixx" />
+    <ClCompile Include="src\fpsTimer.ixx" />
+    <ClCompile Include="src\logTags.ixx" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Renderer.ixx" />
+    <ClCompile Include="src\RendererSetup.ixx" />
+    <ClCompile Include="src\vectorPoints.ixx" />
+    <ClCompile Include="src\WindowClass.ixx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

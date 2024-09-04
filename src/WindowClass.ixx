@@ -41,11 +41,23 @@ namespace cWND
 		Window()
 			: m_hInstance(GetModuleHandle(nullptr))
 		{
+			// load custom icon
+
+			HICON m_Icon = static_cast<HICON>(LoadImageA(
+				NULL,
+				"C://Users/Lorenz/Documents/Dokumente/Hobby/Coding/C++/CustomRenderer/res/pixel-icon2.ico",
+				IMAGE_ICON,
+				23,
+				24,
+				LR_LOADFROMFILE
+			));
+
+			// window class
 			WNDCLASS wndClass = {};
 
 			wndClass.lpszClassName = CLASS_NAME;
 			wndClass.hInstance = m_hInstance;
-			wndClass.hIcon = LoadIcon(NULL, IDI_WINLOGO);
+			wndClass.hIcon = m_Icon;
 			wndClass.hCursor = LoadCursor(NULL, IDC_CROSS);
 			wndClass.lpfnWndProc = WindowProc;
 

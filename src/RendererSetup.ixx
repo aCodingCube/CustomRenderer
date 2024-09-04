@@ -52,11 +52,5 @@ namespace RNDR
 			DeleteDC(src);
 			DeleteObject(map);
 		}
-
-		inline COLORREF correctedRGB(unsigned int valueR, unsigned int valueG, unsigned int valueB)
-		{
-			return RGB(valueB, valueG, valueR); // RGB -> BGR (win32 RGB function takes BGR as input)
-		}
-
 	};
 }
