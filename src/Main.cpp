@@ -64,9 +64,19 @@ int main()
 			COLORREF* bitArray = renderer.getBitArray();
 
 			//! ---
-			
-		
-			bitArray[RNDR::hash2Dto1D(639, 1, 640)] = RNDR::cRGB(0, 255, 0);
+
+			pts::Vector2D point1 = {};
+			pts::Vector2D point2 = {};
+
+			point1.x = 50;
+			point1.y = 50;
+
+			point2.x = 200;
+			point2.y = 200;
+
+			// Todo fix handling of m < 0
+
+			RNDR::drawLine(point1,point2,bitArray);
 
 			//! ---
 			

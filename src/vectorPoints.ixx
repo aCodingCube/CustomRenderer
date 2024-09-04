@@ -1,8 +1,8 @@
 export module vectorPoints;
 
-namespace points
+namespace pts
 {
-	export class Point2D
+	export class Vector2D
 	{
 	public:
 		int x{ 0 };
