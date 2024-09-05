@@ -49,7 +49,7 @@ namespace RNDR
 			BitBlt(m_hdc, 0, 0, m_screenWidth, m_screenHeight, src, 0, 0, SRCCOPY); // Destination, x and, y - upper-let corner of place of where to copy, width of the region,
 			// height, source, x and, y of upper-left corner of part of the source
 
-			DeleteDC(src); // reasonable to free memory Here?
+			DeleteDC(src); // reasonable to free memory here?
 			DeleteObject(map);
 		}
 	};
