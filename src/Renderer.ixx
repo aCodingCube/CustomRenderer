@@ -11,7 +11,9 @@ namespace RNDR
 	{
 		unsigned int xBuf = x;
 		unsigned int yBuf = y * xSize;
-		
+		// To-Do rework Hash
+  // unsigned int result = xBuf + yBuf;
+  // return pixelCount - result
 		return xBuf + yBuf;
 	}
 
