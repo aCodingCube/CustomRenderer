@@ -42,7 +42,7 @@ namespace RNDR
 		{
 			for (int i = point1.x; i <= point2.x; i--)
 			{
-				float y_float = m * i; // m * ( i + ScreenHeight)
+				float y_float = m * i; // m * ( i - ScreenWidth)
 				int y_int = std::round(y_float);
 				bitArray[RNDR::hash2Dto1D(i, y_int, 640)] = RNDR::cRGB(255, 255, 255);
 			}
