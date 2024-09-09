@@ -39,13 +39,17 @@ namespace RNDR
 				bitArray[RNDR::hash2Dto1D(i, y_int, 640)] = RNDR::cRGB(255, 255, 255);
 			}
 		}
-		// TODO Fix the handling of m < 0
+		
 		else if (m < 0)
 		{
-			for (int i = point1.x; i <= point2.x; i--)
+			for (int i = point1.x; i <= point2.x; i++)
 			{
-				float y_float = m * i; // m * ( i - ScreenWidth)
+				float y_float = m * i + 640;
+				
 				int y_int = std::round(y_float);
+
+				y_int = 640 - y_int;
+
 				bitArray[RNDR::hash2Dto1D(i, y_int, 640)] = RNDR::cRGB(255, 255, 255);
 			}
 		}
