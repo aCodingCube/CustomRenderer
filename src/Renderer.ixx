@@ -30,7 +30,7 @@ namespace RNDR
 		return RGB(valueB, valueG, valueR); // RGB -> BGR (win32 RGB function takes BGR as input)
 	}
 
-	export void drawLine(pts::Vector2D point1, pts::Vector2D point2, COLORREF* bitArray)
+	export void drawLine(pts::Vector2D point1, pts::Vector2D point2, COLORREF* bitArray,unsigned int screenWidth,unsigned int screenHeight)
 	{
 		pts::Vector2D line = {};
 		line.x = point2.x - point1.x;
@@ -43,22 +43,23 @@ namespace RNDR
 			for (int i = point1.x; i <= point2.x; i++)
 			{
 				float y_float = m * i;
+
 				int y_int = std::round(y_float);
-				bitArray[RNDR::hash2Dto1D(i, y_int, 640,480)] = RNDR::cRGB(255, 255, 255);
+
+				bitArray[RNDR::hash2Dto1D(i, y_int, screenWidth,screenHeight)] = RNDR::cRGB(255, 255, 255);
 			}
 		}
 		
 		else if (m < 0)
 		{
-			for (int i = point1.x; i <= point2.x; i++)
+			for (int x = point2.x; x <= point1.x; x++)
 			{
-				float y_float = m * i + 640;
-				
+
+				float y_float = m * x + (point1.y + point2.y);
+					
 				int y_int = std::round(y_float);
-
-				y_int = 640 - y_int;
-
-				bitArray[RNDR::hash2Dto1D(i, y_int, 640,480)] = RNDR::cRGB(255, 255, 255);
+				
+				bitArray[RNDR::hash2Dto1D(x, y_int, screenWidth,screenHeight)] = RNDR::cRGB(255, 255, 255);
 			}
 		}
 	}

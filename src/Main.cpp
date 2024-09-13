@@ -63,15 +63,15 @@ int main()
 			pts::Vector2D point1 = {};
 			pts::Vector2D point2 = {};
 
-			point1.x = 50;
+			point1.x = 200;
 			point1.y = 50;
 
-			point2.x = 200;
+			point2.x = 50;
 			point2.y = 200;
 
 			// Todo fix handling of m < 0
 
-			RNDR::drawLine(point1,point2,bitArray);
+			RNDR::drawLine(point1,point2,bitArray,screenWidth,screenHeight);
 			//! ---
 			
 			// render bit array
