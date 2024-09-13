@@ -13,15 +13,8 @@ import fpsTimer;
 import Renderer;
 import vectorPoints;
 
-// functions
-inline void tagSetup(cslTag::Tags& logger)
-{
-	logger.createNewTag(cslTag::RED, "ERROR");
-	logger.createNewTag(cslTag::LIGHT_YELLOW, "WARNING");
-	logger.createNewTag(cslTag::LIGHT_BLUE, "WINDOW");
-	logger.createNewTag(cslTag::LIGHT_GREEN, "RENDERER");
-	logger.createNewTag(cslTag::LIGHT_MAGENTA, "PROGRAM");
-}
+// declare functions
+inline void tagSetup(cslTag::Tags& logger);
 
 // main
 
@@ -38,7 +31,9 @@ int main()
 	std::cout << "Creating Window\n";
 
 	// create Window obj
-	cWND::Window* pWindow = new cWND::Window();
+	unsigned int screenWidth = 640;
+	unsigned int screenHeight = 480;
+	cWND::Window* pWindow = new cWND::Window(screenWidth,screenHeight);
 
 	// creating renderer obj
 	RNDR::Renderer renderer(pWindow);
@@ -77,7 +72,6 @@ int main()
 			// Todo fix handling of m < 0
 
 			RNDR::drawLine(point1,point2,bitArray);
-
 			//! ---
 			
 			// render bit array
@@ -97,4 +91,14 @@ int main()
 	std::cin.get(); // wait for input (any key)
 
 	return 0;
+}
+
+// functions
+inline void tagSetup(cslTag::Tags& logger)
+{
+	logger.createNewTag(cslTag::RED, "ERROR");
+	logger.createNewTag(cslTag::LIGHT_YELLOW, "WARNING");
+	logger.createNewTag(cslTag::LIGHT_BLUE, "WINDOW");
+	logger.createNewTag(cslTag::LIGHT_GREEN, "RENDERER");
+	logger.createNewTag(cslTag::LIGHT_MAGENTA, "PROGRAM");
 }

@@ -6,23 +6,10 @@ import std;
 
 namespace cWND
 {
-
-	LRESULT CALLBACK WindowProc(HWND hWnd,UINT uMsg, WPARAM wParam, LPARAM lParam)
-	{
-		switch (uMsg)
-		{
-		case WM_CLOSE:
-			DestroyWindow(hWnd);
-			break;
-
-		case WM_DESTROY:
-			PostQuitMessage(0);
-			return 0;
-		}
-
-		return DefWindowProc(hWnd, uMsg, wParam, lParam);
-	}
-
+	// declare functions
+	LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+	
+	// classes
 	export class Window
 	{
 	private:
@@ -34,12 +21,12 @@ namespace cWND
 	public:
 		// public member variables
 		HWND m_hWnd = nullptr;
-		int width = 640;
-		int height = 480;
+		int width{ 0 };
+		int height{ 0 };
 
 	public:
-		Window()
-			: m_hInstance(GetModuleHandle(nullptr))
+		Window(unsigned int screenWidth, unsigned int screenHeight)
+			: m_hInstance(GetModuleHandle(nullptr)), width(screenWidth),height(screenHeight)
 		{
 			// load custom icon
 
@@ -120,4 +107,22 @@ namespace cWND
 
 		}
 	};
+
+	// functions
+
+	LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+	{
+		switch (uMsg)
+		{
+		case WM_CLOSE:
+			DestroyWindow(hWnd);
+			break;
+
+		case WM_DESTROY:
+			PostQuitMessage(0);
+			return 0;
+		}
+
+		return DefWindowProc(hWnd, uMsg, wParam, lParam);
+	}
 }

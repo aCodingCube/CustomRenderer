@@ -7,13 +7,21 @@ import std;
 
 namespace RNDR
 {
-	export inline unsigned int hash2Dto1D(unsigned int x, unsigned int y, unsigned int xSize)
+	// version with vector2D as an input
+	export inline unsigned int hash2Dto1D(pts::Vector2D vector, unsigned int screenWidth, unsigned int screenHeight)
+	{
+		unsigned int xBuf = vector.x;
+		unsigned int yBuf = (screenHeight - 1) - vector.y;
+		yBuf *= screenWidth;
+		return xBuf + yBuf;
+	}
+
+	// version with tow seperate numbers as input
+	export inline unsigned int hash2Dto1D(unsigned int x, unsigned int y, unsigned int screenWidth, unsigned int screenHeight)
 	{
 		unsigned int xBuf = x;
-		unsigned int yBuf = y * xSize;
-		// To-Do rework Hash
-  // unsigned int result = xBuf + yBuf;
-  // return pixelCount - result
+		unsigned int yBuf = (screenHeight - 1) - y;
+		yBuf *= screenWidth;
 		return xBuf + yBuf;
 	}
 
@@ -36,7 +44,7 @@ namespace RNDR
 			{
 				float y_float = m * i;
 				int y_int = std::round(y_float);
-				bitArray[RNDR::hash2Dto1D(i, y_int, 640)] = RNDR::cRGB(255, 255, 255);
+				bitArray[RNDR::hash2Dto1D(i, y_int, 640,480)] = RNDR::cRGB(255, 255, 255);
 			}
 		}
 		
@@ -50,7 +58,7 @@ namespace RNDR
 
 				y_int = 640 - y_int;
 
-				bitArray[RNDR::hash2Dto1D(i, y_int, 640)] = RNDR::cRGB(255, 255, 255);
+				bitArray[RNDR::hash2Dto1D(i, y_int, 640,480)] = RNDR::cRGB(255, 255, 255);
 			}
 		}
 	}
