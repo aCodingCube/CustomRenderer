@@ -49,15 +49,15 @@ namespace RNDR
 
 		float m = line.y / line.x;
 
-		if (m >= 0)
+		if (m > 0)
 		{
-			for (int i = m_point1.x; i <= m_point2.x; i++)
+			for (int x = m_point1.x; x <= m_point2.x; x++)
 			{
-				float y_float = m * i;
+				float y_float = m * x;
 
 				int y_int = std::round(y_float);
 
-				bitArray[RNDR::hash2Dto1D(i, y_int, screenWidth,screenHeight)] = RNDR::cRGB(255, 255, 255);
+				bitArray[RNDR::hash2Dto1D(x, y_int, screenWidth,screenHeight)] = RNDR::cRGB(255, 255, 255);
 			}
 		}
 		
@@ -71,6 +71,14 @@ namespace RNDR
 				int y_int = std::round(y_float);
 				
 				bitArray[RNDR::hash2Dto1D(x, y_int, screenWidth,screenHeight)] = RNDR::cRGB(255, 255, 255);
+			}
+		}
+
+		else if (m == 0)
+		{
+			for (int x = m_point1.x; x <= m_point2.x; x++)
+			{
+				bitArray[RNDR::hash2Dto1D(x, point1.y, screenWidth, screenHeight)] = RNDR::cRGB(255, 255, 255);
 			}
 		}
 	}

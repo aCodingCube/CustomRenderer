@@ -8,7 +8,7 @@ import std;
 
 namespace cslTag
 {
-	export enum Color
+	export constexpr enum Color
 	{
 		BLACK = 30, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, LIGHT_GRAY,
 		DARK_GRAY = 90, LIGHT_RED, LIGHT_GREEN, LIGHT_YELLOW, LIGHT_BLUE, LIGHT_MAGENTA, LIGHT_CYAN, WHITE

@@ -3,7 +3,8 @@ export module RendererSetup;
 // imports
 import std;
 import WindowClass;
-import <Windows.h>;
+
+import <Windows.h>; // if not import -> errors
 
 
 namespace RNDR

@@ -52,7 +52,10 @@ int main()
 				logger.tag("WINDOW");
 				std::cout << "Closing Window \n";
 				running = false;
+				break;
 			}
+
+			std::cout << fpsTimer.getFramerate() << '\n';
 
 			//! Main Loop
 			// get bitArray (array with RGB value of all pixels)
@@ -60,18 +63,10 @@ int main()
 
 			//! ---
 
-			pts::Vector2D point1 = {};
-			pts::Vector2D point2 = {};
+			pts::Vector2D point1(50,50);
+			pts::Vector2D point2(200,50);
 
-			point1.x = 50;
-			point1.y = 50;
-
-			point2.x = 200;
-			point2.y = 200;
-
-			// Todo fix handling of m < 0
-
-			RNDR::drawLine(point2,point1,bitArray,screenWidth,screenHeight);
+			RNDR::drawLine(point1,point2,bitArray,screenWidth,screenHeight);
 			//! ---
 			
 			// render bit array

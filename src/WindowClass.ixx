@@ -25,6 +25,7 @@ namespace cWND
 		int height{ 0 };
 
 	public:
+		// constructor
 		Window(unsigned int screenWidth, unsigned int screenHeight)
 			: m_hInstance(GetModuleHandle(nullptr)), width(screenWidth),height(screenHeight)
 		{
