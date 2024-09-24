@@ -11,7 +11,7 @@ import LogTags;
 import RendererSetup;
 import fpsTimer;
 import Renderer;
-import vectorPoints;
+import dataStructures;
 
 // declare functions
 inline void tagSetup(cslTag::Tags& logger);
@@ -38,6 +38,9 @@ int main()
 	// creating renderer obj
 	RNDR::Renderer renderer(pWindow);
 
+	// creating renderer handle
+	RNDR::RenderingHandle rHandle(screenWidth, screenHeight);
+
 	// creating FPS Timer to controll Framerate
 	constexpr unsigned int framerate = 28;
 	fps::FPStimer fpsTimer(28);
@@ -63,10 +66,10 @@ int main()
 
 			//! ---
 
-			pts::Vector2D point1(50,50);
-			pts::Vector2D point2(200,50);
+			dta::Vector2D point1(50,50);
+			dta::Vector2D point2(200,50);
 
-			RNDR::drawLine(point1,point2,bitArray,screenWidth,screenHeight);
+			rHandle.drawLine(point1, point2, bitArray);
 			//! ---
 			
 			// render bit array

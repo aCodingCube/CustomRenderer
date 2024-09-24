@@ -30,7 +30,7 @@
     <ClCompile Include="src\fpsTimer.ixx">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="src\vectorPoints.ixx">
+    <ClCompile Include="src\dataStructures.ixx">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderer.ixx">

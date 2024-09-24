@@ -138,7 +138,7 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Renderer.ixx" />
     <ClCompile Include="src\RendererSetup.ixx" />
-    <ClCompile Include="src\vectorPoints.ixx" />
+    <ClCompile Include="src\dataStructures.ixx" />
     <ClCompile Include="src\WindowClass.ixx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
