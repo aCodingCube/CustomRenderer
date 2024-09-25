@@ -46,4 +46,31 @@ namespace fps
 			return m_currentFPS;
 		}
 	};
+
+	export class Timer
+	{
+	private:
+		// private member variables
+		std::chrono::time_point<std::chrono::steady_clock> m_start, m_end;
+		std::chrono::duration<float> m_duration{ 0 };
+
+	public:
+
+		Timer() : m_start(std::chrono::high_resolution_clock::now()) {}
+
+		~Timer() {}
+
+		// public functions
+
+		void stopTimer()
+		{
+			m_end = std::chrono::high_resolution_clock::now();
+			m_duration = m_end - m_start;
+		}
+
+		float getTime()
+		{
+			return m_duration.count();
+		}
+	};
 }

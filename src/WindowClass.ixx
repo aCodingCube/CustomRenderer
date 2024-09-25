@@ -33,10 +33,10 @@ namespace cWND
 
 			HICON m_Icon = static_cast<HICON>(LoadImageA(
 				NULL,
-				"C://Users/Lorenz/Documents/Dokumente/Hobby/Coding/C++/CustomRenderer/res/pixel-icon2.ico",
+				"C://Users/Lorenz/Documents/Dokumente/Hobby/Coding/C++/CustomRenderer/res/window_icon.ico",
 				IMAGE_ICON,
-				23,
-				24,
+				NULL,
+				NULL,
 				LR_LOADFROMFILE
 			));
 
